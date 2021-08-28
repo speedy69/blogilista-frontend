@@ -1,0 +1,15 @@
+.logintext {
+    font-size: 30px;
+    font-weight: bold;
+    text-shadow: 2px 2px lightgrey;
+}
+
+.blogtext {
+    font-size: 30px;
+    font-weight: bold;
+    text-shadow: 2px 2px lightgrey;
+}
+
+input {
+    box-shadow: 2px 2px 1px lightgrey;
+}

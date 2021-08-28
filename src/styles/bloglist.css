@@ -1,0 +1,16 @@
+.bloglist {
+    border-style: outset;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    padding-left: 10px;
+}
+
+button.delete {
+    background-color: red;
+    color: white;
+    box-shadow: 1px 1px lightgray;
+}
+
+button {
+    border-radius: 7px;
+}

@@ -1,0 +1,15 @@
+.error {
+    font-size: 25px;
+    color: red;
+    font-weight: bold;
+    background-color: lightgray;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border-color: red;
+    border-style: solid;
+}
+
+.normal {
+    font-size: 25px;
+}
