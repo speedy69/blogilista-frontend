@@ -24,7 +24,7 @@ const CreateNewBlog = () => {
 
 	return(
 		<>
-			<button hidden={isHidden} onClick={() => setHidden(!isHidden)}>crete new blog</button>
+			<button hidden={isHidden} onClick={() => setHidden(!isHidden)}>crete new</button>
 			<form onSubmit={handleSubmit} hidden={!isHidden}>
 				<table><tbody>
 					<tr>

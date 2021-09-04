@@ -1,28 +1,31 @@
 import React, { useEffect } from 'react'
 import './styles/App.css'
-import Login from './components/login'
-import Blogs from './components/blogs/blogs'
 import { initBlogs } from './redusers/blogsReduser'
 import { initUsers } from './redusers/allUsersReduser'
 import { useDispatch, useSelector } from 'react-redux'
-import { Switch, Route, Redirect } from 'react-router-dom'
-import Users from './components/users/users'
+import Notification from './components/notification'
 import Menu from './components/menu'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import User from './components/users/user'
 import Blog from './components/blogs/blog'
+import Login from './components/login'
+import Blogs from './components/blogs/blogs'
+import Users from './components/users/users'
+
 
 function App() {
-	const user = useSelector(state => state.user)
 	const dispatch = useDispatch()
+	const user = useSelector(state => state.user)
 
-	useEffect( () => {
+	useEffect(() => {
 		dispatch(initBlogs())
 		dispatch(initUsers())
 	}, [])
 
 	return (
-		<>
+		<div>
 			<Menu />
+			<Notification />
 			<Switch>
 				<Route path='/blogs/:id'>
 					<Blog />
@@ -45,12 +48,11 @@ function App() {
 				</Route>
 				<Route path='/'>
 					<div>
-						test
+						{user ? <p>test</p> : <Redirect to='/login' />}
 					</div>
 				</Route>
 			</Switch>
-		</>
-
+		</div>
 	)
 }
 

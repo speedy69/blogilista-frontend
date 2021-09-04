@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import '../../styles/blogList.css'
 
 const BlogList = () => {
 	const blogs = useSelector(state => state.blogs)
@@ -8,9 +9,10 @@ const BlogList = () => {
 	return(
 		<div>
 			{blogs.map((blog) => {
-				return <li key={blog.id} >
+				return <div key={blog.id} className='blogList' >
 					<Link to={`/blogs/${blog.id}`}>{blog.title}</Link>
-				</li>
+					{blog.author}
+				</div>
 			})}
 		</div>
 	)

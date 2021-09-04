@@ -1,8 +1,7 @@
 /* eslint-disable no-case-declarations */
 import { getAll, postBlog } from '../services/blog'
-const stateAtFirst = [{ title: 'not loaded yet or connection to server is down', author: 'db-server', url: 'http://localhost', user: { name: 'down' }, id:'1', likes: 0 }]
 
-const blogsReduser = (state = stateAtFirst, action) => {
+const blogsReduser = (state = [], action) => {
 
 	switch(action.type){
 	case 'INIT_BLOGS':
@@ -27,8 +26,8 @@ const blogsReduser = (state = stateAtFirst, action) => {
 
 }
 
-export const addLike = (id, likes) => {
-	return { type: 'ADD_LIKE', id: id, likes: likes }
+export const addLike = (id, data) => {
+	return { type: 'ADD_LIKE', id: id, likes: data }
 }
 
 export const deleteBlog = (id) => {

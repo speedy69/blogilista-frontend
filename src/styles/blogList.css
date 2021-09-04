@@ -1,0 +1,15 @@
+.blogList {
+    border-style: outset;
+    padding: 5px;
+    color: blue;
+    margin: 5px;
+}
+
+.blogList > * {
+    text-decoration: none;
+    margin-right: 5px;
+}
+
+.blogList > *:hover {
+    text-decoration: underline;
+}
