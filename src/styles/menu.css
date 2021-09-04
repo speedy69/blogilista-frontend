@@ -1,0 +1,31 @@
+
+.links {
+    background-color: darkgreen;
+    padding: 5px;
+}
+
+.linksButton {
+    margin-left: 5px;
+    background-color: white;
+}
+
+.link {
+    color: white;
+    margin: 2px;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.blogtext {
+    font-size: 25px;
+    font-weight: bold;
+    text-shadow: 2px 2px lightgrey;
+}
+
+.user {
+    color: yellow;
+    margin: 2px;
+}

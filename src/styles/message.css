@@ -11,5 +11,11 @@
 }
 
 .normal {
+    background-color: lightgray;
     font-size: 25px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    border-color: darkgreen;
+    border-style: solid;
 }

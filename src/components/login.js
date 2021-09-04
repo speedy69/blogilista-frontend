@@ -1,42 +1,41 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import { setMessage } from '../redusers/nofificationReducer'
+import { addUser } from '../redusers/userReduser'
 import userLogin from '../services/userLogin'
 import Notification from './notification'
 
-const Login = ({ setters, message }) => {
-  	const [setUser, setMessage, setVisibility] = setters
+const Login = () => {
+	const history = useHistory()
+	const dispatch = useDispatch()
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
 
 	const handleSubmit = async (event) => {
-    event.preventDefault()
-    try{
-    	const user = await userLogin({ username : username, password: password })
+		event.preventDefault()
+
+		const user = await userLogin({ username : username, password: password })
+
 		if(user){
-			setUser(user)
-			setUsername(''); setPassword('')
-			setVisibility(true)
-		} else {
-			setMessage('wrong username or password')
-			setTimeout(() => {
-				setMessage(null)
-			}, 3500);
+			dispatch(addUser(user))
+			dispatch(setMessage(`user ${user.name} logged in`, 'normal'))
+			history.goBack()
+		}else {
+			dispatch(setMessage('wrong username or password', 'error'))
 		}
-    	
-    } catch (expect){
-    	console.log(expect)
-    }
 	}
 
 	return (
 		<div>
 			<p className='logintext'>log in to application</p>
-			<Notification message={message} />
+			<Notification  />
 			<form onSubmit={handleSubmit}>
-        	username: <br/>
-			<input value={username} type='text' onChange={(event) => setUsername(event.target.value)}/> <br />
-        	password:<br/>
-			<input value={password} type='password' onChange={(event) => setPassword(event.target.value)}/> <br />
-			<p><button type='submit'>login</button></p>
+			username: <br/>
+				<input value={username} type='text' onChange={(event) => setUsername(event.target.value)}/> <br />
+				password:<br/>
+				<input value={password} type='password' onChange={(event) => setPassword(event.target.value)}/> <br />
+				<p><button type='submit'>login</button></p>
 			</form>
 		</div>
 	)
