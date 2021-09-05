@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import { useField } from '../hooks'
 import { setMessage } from '../redusers/nofificationReducer'
 import { addUser } from '../redusers/userReduser'
 import userLogin from '../services/userLogin'
@@ -8,13 +8,13 @@ import userLogin from '../services/userLogin'
 const Login = () => {
 	const history = useHistory()
 	const dispatch = useDispatch()
-	const [username, setUsername] = useState('')
-	const [password, setPassword] = useState('')
+	const username = useField('text')
+	const password = useField('password')
 
 	const handleSubmit = async (event) => {
 		event.preventDefault()
 
-		const user = await userLogin({ username : username, password: password })
+		const user = await userLogin({ username : username.value, password: password.value })
 
 		if(user){
 			dispatch(addUser(user))
@@ -30,9 +30,9 @@ const Login = () => {
 			<p className='logintext'>log in to application</p>
 			<form onSubmit={handleSubmit}>
 			username: <br/>
-				<input value={username} type='text' onChange={(event) => setUsername(event.target.value)}/> <br />
+				<input {...username} /> <br />
 				password:<br/>
-				<input value={password} type='password' onChange={(event) => setPassword(event.target.value)}/> <br />
+				<input {...password} /> <br />
 				<p><button type='submit'>login</button></p>
 			</form>
 		</div>

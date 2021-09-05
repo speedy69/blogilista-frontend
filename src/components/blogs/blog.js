@@ -8,15 +8,20 @@ const Blog = () => {
 	const blog = useSelector(state => state.blogs).find(blog => blog.id === id)
 	const dispatch = useDispatch()
 
+	if(!blog) return null
+
 	return (
 		<div>
-			<h2>{blog ? blog.title : null}</h2>
-			<a href={blog ? blog.url : null}>{blog ? blog.url : null}</a>
+			<h2>{blog.title}</h2>
+			<a href={blog.url}>{blog.url}</a>
 			<br></br>
-			{blog ? blog.likes : null} likes
+			{blog.likes} likes
 			<input type='button' value='vote' onClick={() => updateBlog(id).then(res => dispatch(addLike(id, res.data.likes)))} style={{ marginLeft: 5 }}/>
 			<br></br>
-			added by {blog ? blog.user.name : null}
+			added by {blog.user.name}
+			<h3>comments</h3>
+			<input />
+			<input type='button' value='add comment' />
 		</div>
 	)
 }

@@ -12,7 +12,6 @@ import Login from './components/login'
 import Blogs from './components/blogs/blogs'
 import Users from './components/users/users'
 
-
 function App() {
 	const dispatch = useDispatch()
 	const user = useSelector(state => state.user)
@@ -48,7 +47,7 @@ function App() {
 				</Route>
 				<Route path='/'>
 					<div>
-						{user ? <p>test</p> : <Redirect to='/login' />}
+						<p>test</p>
 					</div>
 				</Route>
 			</Switch>
